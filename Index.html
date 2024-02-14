@@ -1,0 +1,42 @@
+<DOCTYPE!>
+<html>
+    <form id="myForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="name">Pass:</label>
+        <input type="text" id="Pass" name="Pass" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <button formaction="Page1.html" type="button" onclick="saveFormData()">Submit</button>
+    </form>
+
+    <script>
+        function saveFormData() {
+            // Get form data
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var pass = document.getElementById('pass').value;
+
+            // Create a JSON object with form data
+            var formData = {
+                name: name,
+                email: email
+            };
+
+            // Convert JSON to string
+            var formDataString = JSON.stringify(formData);
+
+            // Save data to a file (In this example, using a simple alert)
+            alert("Form data saved:\n" + formDataString);
+
+            // You can send this data to a server or use other methods to save it to a file
+            // For security reasons, browsers don't allow direct file system access from client-side JavaScript
+        }
+    </script>
+
+</body>
+
+</html>
