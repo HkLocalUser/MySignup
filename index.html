@@ -1,24 +1,32 @@
-<DOCTYPE!>
-<html>
-    <form id="myForm">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Data Storage and Redirect</title>
+</head>
+<body>
+
+    <h2>Form Data Storage and Redirect</h2>
+
+    <form id="myForm" onsubmit="submitForm(event)">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
-
-        <label for="name">Pass:</label>
-        <input type="text" id="Pass" name="Pass" required>
 
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
 
-        <button formaction="Page1.html" type="button" onclick="saveFormData()">Submit</button>
+        <!-- Use type="submit" for the submit button -->
+        <button type="submit">Submit and Redirect</button>
     </form>
 
     <script>
-        function saveFormData() {
+        function submitForm(event) {
+            event.preventDefault(); // Prevents the form from submitting normally
+
             // Get form data
             var name = document.getElementById('name').value;
             var email = document.getElementById('email').value;
-            var pass = document.getElementById('pass').value;
 
             // Create a JSON object with form data
             var formData = {
@@ -29,14 +37,14 @@
             // Convert JSON to string
             var formDataString = JSON.stringify(formData);
 
-            // Save data to a file (In this example, using a simple alert)
-            alert("Form data saved:\n" + formDataString);
+            // Simulate storing data to a file (you would replace this with a server-side solution)
+            // In this example, we're using localStorage, which is not suitable for a real-world scenario
+            localStorage.setItem('formData', formDataString);
 
-            // You can send this data to a server or use other methods to save it to a file
-            // For security reasons, browsers don't allow direct file system access from client-side JavaScript
+            // Redirect to a certain page (replace 'destination-page.html' with the actual URL)
+            window.location.href = 'Page1.html';
         }
     </script>
 
 </body>
-
 </html>
